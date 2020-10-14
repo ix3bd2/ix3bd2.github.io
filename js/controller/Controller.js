@@ -5,6 +5,7 @@ import {View} from "../view/View.js";
 export class Controller {
 
     constructor() {
+        //knoppen gekopelt aan de function in model
         this.quiz = new Quiz();
         this.view = new View(this.quiz);
         this.quiz.setView(this.view);

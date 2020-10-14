@@ -2,8 +2,8 @@
 export class View {
     constructor(quiz) {
         this.quiz = quiz;
-
     }
+    //render de vraag in html
   rendervraag(){
         let v = this.quiz.getVraag();
         this.quiz.VraagHTML.innerHTML = v.getVraag();
@@ -13,22 +13,20 @@ export class View {
         this.quiz.Antwoord4.innerHTML = v.getoptie4();
         this.quiz.VraagNum.innerHTML = v.getvraagnum();
     }
+    //De view veranderen van html wanneer de quiz begint
     startquiz(){
         this.naam = document.getElementById("input1").value;
         this.quiz.login.style.display = "none";
         this.quiz.col3.innerHTML = "Welkom <br>" + this.naam;
         this.quiz.AllRow.style.display = "block";
-
-
-
     }
+    //maak div in html
     maakdiv() {
         this.NewDic = document.getElementById("creat");
         this.div = document.createElement('div');
         this.div.classList.add('test');
         this.NewDic.appendChild(this.div);
         document.getElementsByClassName('test');
-
         let vr = "Vraag : ";
         let goed = "GoedeAntwoord : ";
         this.div.innerHTML = vr;
@@ -37,33 +35,25 @@ export class View {
         this.NewDic.style.display = "none";
         if (this.quiz.tell == 10) {
             this.div.innerHTML += "<br>U cijfer is " + this.quiz.cijfer + "/10";
-
         }
         this.NewDic.style.color="white";
-
     }
-
-
+    //verander de html wanneer de toet klaar is
     endquiz(){
         document.getElementById("R3").style.display="none";
         this.quiz.center.style.display="none";
         this.quiz.Inleveren.style.display="block";
-
-
-
-
-
     }
+    //verander de html wanneer je op restart clickt .
     restart(){
         location.reload();
     }
+    //verander html wanneer je je toets inlevert
     inleveren(){
         this.NewDic.style.display="block";
         this.quiz.Inleveren.parentNode.removeChild(this.quiz.Inleveren);
        document.querySelector("#restart").style.display="block";
-
     }
-
 }
 // Deze code is niet geluck met MVC wat i kkrijg een rare Erro
 // code voor de timer

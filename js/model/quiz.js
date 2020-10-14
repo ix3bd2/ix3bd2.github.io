@@ -3,7 +3,7 @@ import {Vraag} from "../model/Vraag.js";
 export class Quiz {
 
     constructor() {
-
+                // haal all de ids die je nodig hebt van html
         this.VraagHTML = document.querySelector("#vragen");
         this.Antwoord1 = document.querySelector("#antwoordA");
         this.Antwoord2 = document.querySelector("#antwoordB");
@@ -17,7 +17,6 @@ export class Quiz {
         this.cijfer = 0;
         this.tell= 0;
         this.center = document.querySelector("#center");
-
         this.vragen = [];
         for (let id = 1; id <= 11; id++) {
             this.vragen.push(new Vraag(id));
@@ -30,25 +29,23 @@ export class Quiz {
     {
         this.view=view;
     }
+        //haal de vraagNummer uit de arry
     getvraagnr(){
         return this.vragen[this.volgendevraag].nr;
-}
-
+    }
+    //haal de vraag uit de array
     getVraag() {
-
         return this.vragen[this.volgendevraag];
     }
-
+    //volgendde vraag halen uit array
     SetVolgendeVraag() {
-
         return (this.volgendevraag++);
     }
+    //checket welke antwoord is goed
     Goedeantwoord() {
-
         return this.vragen[this.volgendevraag].correct;
     }
-
-
+    //checket welke antwoord is goed
     controleerAntwoord(answer){
         if(answer == this.Goedeantwoord()){
 
@@ -57,34 +54,16 @@ export class Quiz {
             this.cijfer++
             this.tell++;
             this.view.maakdiv();
-
-
-
-
         }
         else if(answer != this.Goedeantwoord()){
-
             this.SetVolgendeVraag();
             this.view.rendervraag();
             this.tell++;
             this.view.maakdiv();
-
-
         }
-
         if(this.tell == 10){
-
-                this.view.endquiz();
-
-
-
+            this.view.endquiz();
         }
-
-    }
-    checkSecond(sec) {
-        if (sec < 10 && sec >= 0) {sec = "0" + sec};
-        if (sec < 0) {sec = "59"};
-        return sec;
     }
 }
 
